@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundMain"
+    tools:context=".Chat">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:background="#4D22344E">
+
+        <ImageView
+            android:id="@+id/back_to"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
+        <ImageView
+            android:id="@+id/prof_photo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/back_to"
+            android:src="@drawable/ic_launcher_background" />
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_toStartOf="@id/call"
+            android:layout_toEndOf="@id/prof_photo"
+            android:fontFamily="@font/farro"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/nedavno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_toStartOf="@id/call"
+            android:layout_toEndOf="@id/prof_photo"
+            android:text="was recently"
+            android:textColor="#B8B8B8"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/call"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/dot_menu"
+            android:src="@drawable/ic_twotone_call_24" />
+
+        <ImageView
+            android:id="@+id/dot_menu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/triple_dot_menu_white" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/sender"
+        android:layout_alignEnd="@id/sender"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/chat_message"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/message_he"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/farro"
+            android:maxWidth="300sp"
+            android:text="Qondaye Brat"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:tooltipText="3"
+            tools:ignore="UnusedAttribute" />
+
+        <TextView
+            android:id="@+id/clockwise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/message_he"
+            android:layout_marginStart="10dp"
+            android:text="10:00"
+            android:textColor="#B8B8B8"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/chch"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/clockwise"
+            android:src="@drawable/doublecheck_white" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/sender"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="#4D22344E">
+
+        <ImageView
+            android:id="@+id/smile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/smile" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="60dp"
+            android:text="message..."
+            android:textColor="#B8B8B8"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="60dp"
+            android:src="@drawable/clip_white" />
+
+        <ImageView
+            android:id="@+id/voice"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|end"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_baseline_keyboard_voice_24" />
+
+    </FrameLayout>
+
+</RelativeLayout>
