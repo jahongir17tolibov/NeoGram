@@ -79,7 +79,7 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/sender"
@@ -94,7 +94,6 @@
             android:id="@+id/message_he"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:elegantTextHeight="true"
             android:fontFamily="@font/farro"
             android:maxWidth="300sp"
@@ -108,9 +107,9 @@
             android:id="@+id/clockwise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/message_he"
             android:layout_marginStart="10dp"
             android:text="10:00"
+            android:layout_gravity="bottom"
             android:textColor="#B8B8B8"
             android:textSize="16sp" />
 
@@ -118,12 +117,11 @@
             android:id="@+id/chch"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_gravity="bottom"
+            android:layout_gravity="bottom|end"
             android:layout_marginStart="8dp"
-            android:layout_toEndOf="@id/clockwise"
             android:src="@drawable/doublecheck_white" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/sender"
