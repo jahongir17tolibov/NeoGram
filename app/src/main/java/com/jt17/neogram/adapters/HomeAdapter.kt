@@ -1,18 +1,23 @@
 package com.jt17.neogram.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.jt17.neogram.Chat
 import com.jt17.neogram.Profile
 import com.jt17.neogram.R
 import com.jt17.neogram.models.ItemModel
 
-class HomeAdapter(val list: List<ItemModel>) : RecyclerView.Adapter<HomeAdapter.ItemHolder>() {
+class HomeAdapter(val list: List<ItemModel>, val onCallBack: AdapterCallBack) :
+    RecyclerView.Adapter<HomeAdapter.ItemHolder>() {
 
     inner class ItemHolder(view: View) : RecyclerView.ViewHolder(view)
 
@@ -22,6 +27,8 @@ class HomeAdapter(val list: List<ItemModel>) : RecyclerView.Adapter<HomeAdapter.
         return holder
     }
 
+
+    @SuppressLint("CutPasteId", "NotifyDataSetChanged", "ResourceType")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         val itemData = list[position]
 
@@ -35,17 +42,48 @@ class HomeAdapter(val list: List<ItemModel>) : RecyclerView.Adapter<HomeAdapter.
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, Chat::class.java)
 
-            intent.putExtra("key1", itemData.top_txt)
-            intent.putExtra("key2", itemData.profile_img)
-            intent.putExtra("key3",itemData.bottom_txt)
-            intent.putExtra("key4",itemData.clock)
+            intent.putExtra("key", itemData)
 
             holder.itemView.context.startActivity(intent)
 
         }
 
+        if (itemData.pos) {
+            holder.itemView.findViewById<TextView>(R.id.soat).visibility = View.GONE
+            holder.itemView.findViewById<ImageView>(R.id.checkordouble).visibility = View.GONE
+            holder.itemView.findViewById<ImageView>(R.id.delete_btn).visibility = View.VISIBLE
+        } else {
+            holder.itemView.findViewById<TextView>(R.id.soat).visibility = View.VISIBLE
+            holder.itemView.findViewById<ImageView>(R.id.checkordouble).visibility = View.VISIBLE
+            holder.itemView.findViewById<ImageView>(R.id.delete_btn).visibility = View.GONE
+        }
+
+        holder.itemView.findViewById<RelativeLayout>(R.id.realive).setOnLongClickListener {
+            Toast.makeText(holder.itemView.context, "Iwladi", Toast.LENGTH_SHORT).show()
+            itemData.pos = true
+            notifyDataSetChanged()
+            true
+        }
+
+        if (itemData.pos) {
+            holder.itemView.findViewById<RelativeLayout>(R.id.realive).setOnLongClickListener {
+                Toast.makeText(holder.itemView.context, "Bunisiyam iwladi", Toast.LENGTH_SHORT)
+                    .show()
+                itemData.pos = false
+                notifyDataSetChanged()
+                true
+            }
+        }
+        holder.itemView.findViewById<ImageView>(R.id.delete_btn).setOnClickListener {
+            onCallBack.itemClick(position)
+        }
+
     }
 
     override fun getItemCount(): Int = list.size
+
+    interface AdapterCallBack {
+        fun itemClick(a: Int)
+    }
 
 }
