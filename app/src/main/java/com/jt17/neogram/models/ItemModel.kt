@@ -5,5 +5,6 @@ data class ItemModel(
     val top_txt: String,
     val bottom_txt: String,
     val clock: String,
-    val checher: Int
-)
+    val checher: Int,
+    var pos: Boolean = false
+): java.io.Serializable
